@@ -1,0 +1,26 @@
+<div class="section" data-anchor="portfolio">
+	<div class="section-inner section-padding">
+		<h1 class="section-title">Portfolio</h1>
+		<div id="portfolio">
+			{% for key, value in portfolio %}
+				<div class="portfolio-item">
+					<img src="{{ value.image }}" class="portfolio-preview">
+					<div class="portfolio-information">
+						<h1 class="item-title">{{ value.title }}</h1>
+						<ul>
+							<li><b>Project Description:</b><br>{{ value.desc }}</li>
+							<li>
+								<b>Languages &amp; Tools:</b>
+								<ul>
+									{% for tool in value.tools %}
+										<li>{{ tool }}</li>
+									{% endfor %}
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+</div>

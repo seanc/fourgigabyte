@@ -1,0 +1,259 @@
+@import 'vendors'
+
+$gray = #424242
+$orange = #FF9900
+$white = #F7F7F7
+
+$museo-slab = 'museo-slab', sans-serif
+$museo-sans = 'museo-sans', sans-serif
+
+body, html
+  margin 0
+  padding 0
+body
+  background-image url('../images/background.jpg')
+  background-repeat no-repeat
+  background-size cover
+a
+  text-decoration none
+
+.overlay
+  position fixed
+  width 100%
+  height 100%
+  background rgba(#fff, 0.2)
+.navigation
+  position fixed
+  top 50%
+  transform translateY(@top * -1)
+  z-index 666
+  font-family $museo-sans
+  a
+    display block
+    height 65px
+    width @height + 15
+    background-color $gray
+    color #fff
+    text-align center
+    line-height @height
+    i
+      font-size 15pt
+      line-height @height
+    span
+      position relative
+      top -2.5px
+      font-size 10pt
+      text-transform uppercase
+      display none
+    &.active
+      background-color $orange !important
+
+.section-inner
+  background-color rgba($gray, 80%)
+  width 65%
+  min-height 55%
+  max-height 65%
+  margin auto
+  .section-title
+    font-family $museo-slab
+    color $white
+    font-size 35pt
+    margin 0 0 15px 0
+    border-bottom 1px solid rgba($white, 20%)
+  &.section-padding
+    box-sizing border-box
+    padding 8px 15px
+  .section-content
+    font-size 1.2em
+    color #fff
+    font-family $museo-sans
+.modal
+  position fixed
+  top 0
+  left 0
+  width 100%
+  height 100%
+  z-index 667
+  background rgba(#000, 60%)
+  display none
+  .modal-inner
+    background-color #fff
+    width 80%
+    height 60%
+    position absolute
+    top 50%
+    left 0
+    right 0
+    margin auto
+    transform translateY(@top * -1)
+    -webkit-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px 2px rgba(0,0,0,0.75);
+
+.loader
+  position absolute
+  top 0; left 0
+  width 100%; height 100%
+  background-color rgba(#000, 0.8)
+  z-index 888
+  display none
+  .loader-inner
+    position absolute
+    left 0; right 0;
+    top 50%
+    transform translateY(@top * -1)
+    margin auto
+    text-align center
+    .loader-title
+      color #fff
+      font-family $museo-sans
+      h1
+        font-weight 300
+        text-align center
+        margin 0; padding 0
+
+.portfolio-slider
+  font-family $museo-sans
+  .portfolio-slider-body
+    position absolute
+    top 50%
+    transform translateY(@top * -1)
+    border-top 1px solid rgba(#000, 10%)
+    border-bottom @border-top
+    background-color $white
+    .portfolio-item-slide-preview, .portfolio-item-slide-information
+      display inline-block
+    .portfolio-item-slide-preview
+      width 100%
+      min-width @width
+      max-width @width
+      img
+        width 100%
+    .portfolio-item-slide-information
+      width 50%
+      float left
+      box-sizing border-box
+      padding 8px
+      .item-title
+        margin 0
+        font-family $museo-slab
+  .portfolio-slider-controls
+    position absolute
+    bottom 10px
+    left 0
+    right 0
+    font-size 0
+    height 25px
+    a
+      position relative
+      top 5px
+      color #000
+      margin 0px 8px
+      font-size 15pt
+      i
+        font-size 15pt
+#home-title
+  padding 25px 0px
+#motto
+  font-family $museo-sans
+  color $white
+  font-size 15pt
+#social-networks
+  a
+    display inline-block
+    width 80px
+    height @width
+    color $white
+    border 3px solid $white
+    border-radius 80%
+    margin 0px 15px
+    opacity 0.6
+    transition opacity 200ms
+    i
+      font-size 35pt
+      line-height @height
+    &:hover
+      opacity 1
+
+#portfolio
+  text-align center
+  .portfolio-item
+    display inline-block
+    .portfolio-preview
+      width 200px
+      border 2px solid rgba($white, 20%)
+      cursor pointer
+      filter grayscale(100%)
+      transition all 200ms
+      &:hover
+        border-color $white
+        filter grayscale(0%)
+    .portfolio-information
+      display none
+
+#contact-form
+  display inline-block
+  position relative
+  input, textarea
+    background lighten(rgba($gray, 20%), 50%)
+    color #fff
+    font-family $museo-sans
+    &.error
+      border 2px solid rgba(#c00, 50%)
+  input
+    border none
+    height 35px
+    width 250px
+    box-sizing border-box
+    padding 8px
+    margin-bottom 8px
+    &[type="submit"]
+      position absolute
+      right 0
+      border-top 1px solid rgba(#fff, 0.05)
+      cursor pointer
+  textarea
+    display block
+    border none
+    box-sizing border-box
+    padding 8px
+    width 250px * 2 + 5
+    resize none
+
+#contact-social
+  display inline-block
+  float right
+  &:hover > a
+    opacity 0.5
+  &:hover > a:hover
+    opacity 1
+  .social-contact
+    display block
+    height 100px
+    position relative
+    top 20px
+    color #fff
+    font-family $museo-sans
+    transition all 200ms
+    i, span
+      background lighten(rgba($gray, 20%), 50%)
+    i
+      font-size 20pt
+      padding 20px
+      border-radius 100%
+      border 4px solid lighten(rgba($gray, 20%), 80%)
+    span
+      position relative
+      top -5px
+      left -8px
+      height 35px
+      line-height @height
+      display inline-block
+      text-indent 10px
+      min-width 300px
+
+
+.text-center
+  text-align center
+.text-right
+  text-align right

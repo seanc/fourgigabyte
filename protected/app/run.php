@@ -1,10 +1,13 @@
 <?php
 
+session_cache_limiter(false);
 session_start();
 
 require('vendor/autoload.php');
 require('protected/config/config.class.php');
-require('protected/helpers/database.class.php');
+require('protected/helpers/nocsrf.class.php');
+require('protected/models/portfolio.class.php');
+require('protected/helpers/json.class.php');
 
 /* Initialize Slim & Configure */
 $app = new \Slim\Slim([
@@ -15,10 +18,10 @@ $app = new \Slim\Slim([
 $app->config = function() {
   return new Config();
 };
-$app->db = function() use ($app) {
-  $cfg = $app->config->get('database');
-  return new db('mysql:host=' . $cfg->host . ';dbname=' . $cfg->name, $cfg->user, $cfg->pass);
-};
+// $app->db = function() use ($app) { Not needed
+//   $cfg = $app->config->get('database');
+//   return new db('mysql:host=' . $cfg->host . ';dbname=' . $cfg->name, $cfg->user, $cfg->pass);
+// };
 
 /* Set Template Engine */
 $view = $app->view();
@@ -26,6 +29,9 @@ $view->setTemplatesDirectory('protected/views');
 $view->parserExtensions = [
   new \Slim\Views\TwigExtension()
 ];
+// $view->appendData(array(
+//   'csrf_token' => NoCSRF::generate('csrf_token')
+// ));
 
 /* Load Controllers */
 if(!function_exists('glob_recursive')) {
