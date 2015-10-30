@@ -38,7 +38,7 @@ $app->group('/api', function() use ($app) {
           return;
         }
 
-        $sendgrid = new SendGrid('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');
+        $sendgrid = new SendGrid('API_KEY_HERE');
         $email = new SendGrid\Email();
 
         $email
